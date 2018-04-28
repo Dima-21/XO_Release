@@ -120,18 +120,21 @@ namespace XO
             if (isWinX())
             {
                 stats.winX++;
+                stats.countgame++;
                 Console.WriteLine("Выиграл Х");
                 return true;
             }
             if (isWinO())
             {
                 stats.winO++;
+                stats.countgame++;
                 Console.WriteLine("Выиграл O");
                 return true;
             }
             if (isDH())
             {
                 stats.DH++;
+                stats.countgame++;
                 Console.WriteLine("Ничья");
                 return true;
             }

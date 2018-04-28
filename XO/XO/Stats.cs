@@ -10,7 +10,8 @@ namespace XO
     class Stats
     {
         string file = "stats.bat";
-        public int winX { get; set; }
+        public int countgame { get; set; }
+        public int winX { get; set; }   
         public int winO { get; set; }
         public int DH { get; set; }
         public void SaveToFile(char[,] c, int focus)
@@ -20,6 +21,7 @@ namespace XO
             for (int i = 0; i < 3; i++)
                 for (int y = 0; y < 3; y++)
                     fs.WriteByte((byte)c[i, y]);
+            fs.WriteByte((byte)countgame);
             fs.WriteByte((byte)focus);
             fs.WriteByte((byte)winX);
             fs.WriteByte((byte)winO);
@@ -35,6 +37,7 @@ namespace XO
                 for (int i = 0; i < 3; i++)
                     for (int y = 0; y < 3; y++)
                         tmp[i, y] = (char)fs.ReadByte();
+                countgame = (int)fs.ReadByte();
                 focus = (int)fs.ReadByte();
                 winX = (int)fs.ReadByte();
                 winO = (int)fs.ReadByte();
@@ -48,6 +51,7 @@ namespace XO
 
        public void PrintStats()
         {
+            Console.WriteLine($"Количество игр: {countgame}");
             Console.WriteLine($"Количество побед Х: {winX}");
             Console.WriteLine($"Количество побед O: {winO}");
             Console.WriteLine($"Количество ничьих: {DH}");
